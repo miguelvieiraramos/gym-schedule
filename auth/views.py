@@ -6,7 +6,7 @@ from rest_framework import serializers
 from rest_framework import status
 
 from auth.services import create_auth_token
-from mixins import ApiErrorsMixin
+from utils import ApiErrorsMixin
 
 
 class ObtainAuthToken(ApiErrorsMixin, APIView):
