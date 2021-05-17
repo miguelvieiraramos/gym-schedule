@@ -4,12 +4,15 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from mixins import ApiErrorsMixin
-from users.services import create_user, get_user
+from users.services import create_user, get_user, user_list
+from permissions import IsAuthenticatedOrCreateOnly
 from users.serializers import UserSerializer
+from utils import ApiErrorsMixin
 
 
-class UserCreateApi(APIView):
+class UserCreateListApi(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrCreateOnly]
 
     def post(self, request):
         user_serializer = UserSerializer(data=request.data)
@@ -18,6 +21,13 @@ class UserCreateApi(APIView):
         create_user(**user_serializer.validated_data)
 
         return Response(status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        users = user_list(current_user=request.user)
+
+        users_serializer = UserSerializer(instance=users, many=True)
+
+        return Response(users_serializer.data)
 
 
 class UserDetailApi(ApiErrorsMixin, APIView):

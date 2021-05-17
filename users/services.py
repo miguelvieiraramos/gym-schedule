@@ -21,3 +21,12 @@ def get_user(*, id: int, current_user: User) -> User:
         raise ValidationError('User not found.')
 
     return user
+
+
+def user_list(current_user: User):
+    if not current_user.is_superuser:
+        raise ValidationError('You do not have permission to perform this action.')
+
+    users = User.objects.all()
+
+    return users
