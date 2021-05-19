@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
-    'users',
-    'auth'
+    'gym_schedule.users',
+    'gym_schedule.auth'
 ]
 
 MIDDLEWARE = [
@@ -130,5 +130,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'handlers.custom_exception_handler'
+    'EXCEPTION_HANDLER': 'gym_schedule.handlers.custom_exception_handler'
 }

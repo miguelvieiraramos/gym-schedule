@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 
-from users.models import User
+from gym_schedule.users.models import User
 
 
 def create_user(*, username: str, first_name: str, last_name: str, password: str) -> User:

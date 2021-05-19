@@ -4,10 +4,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from users.services import create_user, get_user, user_list
-from permissions import IsAuthenticatedOrCreateOnly
-from users.serializers import UserSerializer
-from utils import ApiErrorsMixin
+from gym_schedule.users.services import create_user, get_user, user_list
+from gym_schedule.permissions import IsAuthenticatedOrCreateOnly
+from gym_schedule.users.serializers import UserSerializer
+from gym_schedule.utils import ApiErrorsMixin
 
 
 class UserCreateListApi(APIView):

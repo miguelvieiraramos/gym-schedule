@@ -1,5 +1,5 @@
 from django.urls import path
-from auth.views import ObtainAuthToken, AuthTest
+from gym_schedule.auth.views import ObtainAuthToken, AuthTest
 
 app_name = 'app_auth'
 

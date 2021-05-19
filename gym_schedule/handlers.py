@@ -1,6 +1,6 @@
 from rest_framework.views import exception_handler
 
-from utils import ErrorsFormatter
+from gym_schedule.utils import ErrorsFormatter
 
 
 def custom_exception_handler(exc, context):

@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework import serializers
 from rest_framework import status
 
-from auth.services import create_auth_token
-from utils import ApiErrorsMixin
+from gym_schedule.auth.services import create_auth_token
+from gym_schedule.utils import ApiErrorsMixin
 
 
 class ObtainAuthToken(ApiErrorsMixin, APIView):

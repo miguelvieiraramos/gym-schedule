@@ -1,5 +1,5 @@
 from django.urls import path
-from users.views import UserCreateListApi, UserDetailApi
+from gym_schedule.users.views import UserCreateListApi, UserDetailApi
 
 app_name = 'users'
 
