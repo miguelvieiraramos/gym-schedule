@@ -5,11 +5,15 @@ from rest_framework.views import APIView
 from rest_framework import serializers
 from rest_framework import status
 
-from gym_schedule.auth.services import create_auth_token
+from gym_schedule.auth.services import Authentication
 from gym_schedule.utils import ApiErrorsMixin
 
 
 class ObtainAuthToken(ApiErrorsMixin, APIView):
+
+    def __init__(self):
+        self.authentication = Authentication()
+
     class InputSerializer(serializers.Serializer):
         username = serializers.CharField(max_length=150)
         password = serializers.CharField(max_length=128)
@@ -18,7 +22,7 @@ class ObtainAuthToken(ApiErrorsMixin, APIView):
         input_serializer = self.InputSerializer(data=request.data)
         input_serializer.is_valid(raise_exception=True)
 
-        token = create_auth_token(**input_serializer.validated_data)
+        token = self.authentication.auth(**input_serializer.validated_data)
 
         return Response({'token': token.key}, status=status.HTTP_200_OK)
 
