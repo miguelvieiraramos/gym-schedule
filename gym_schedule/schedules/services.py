@@ -22,5 +22,4 @@ class AddSchedule:
 class LoadScheduleByDate:
 
     def load(self, *, schedule_date: date) -> Schedule:
-        schedule = find_schedule_by_date(schedule_date=schedule_date)
-        return schedule
+        return find_schedule_by_date(schedule_date=schedule_date)

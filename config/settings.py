@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'gym_schedule.users',
     'gym_schedule.auth',
-    'gym_schedule.schedules'
+    'gym_schedule.schedules',
+    'gym_schedule.times'
 ]
 
 MIDDLEWARE = [

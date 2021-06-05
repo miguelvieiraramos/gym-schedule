@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 
-from gym_schedule.users.services import AddUser, LoadUsers
+from gym_schedule.users.services import AddUser, LoadUserById, LoadUsers
 from gym_schedule.permissions import IsAuthenticatedOrCreateOnly
 from gym_schedule.users.serializers import UserSerializer
 from gym_schedule.utils import ApiErrorsMixin
@@ -38,8 +38,11 @@ class UserDetailApi(ApiErrorsMixin, APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
+    def __init__(self):
+        self.load_user_by_id = LoadUserById()
+
     def get(self, request, user_id):
-        user = get_user(id=user_id, current_user=request.user)
+        user = self.load_user_by_id.load(id=user_id, current_user=request.user)
 
         user_serializer = UserSerializer(instance=user)
 
