@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from gym_schedule.utils import ApiErrorsMixin
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class TimeCreateAPi(ApiErrorsMixin, APIView):
+    pass
